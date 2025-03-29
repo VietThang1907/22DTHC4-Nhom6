@@ -1,0 +1,897 @@
+.container {
+  min-height: 100vh;
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  min-height: 80vh;
+  overflow: hidden;
+}
+
+.bannerBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bannerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(1);
+}
+
+.bannerGradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.2) 30%,
+    rgba(0, 0, 0, 0.6) 60%,
+    rgba(0, 0, 0, 0.8) 80%,
+    rgba(0, 0, 0, 1) 100%
+  ),
+  linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
+
+.bannerContent {
+  position: relative;
+  display: flex;
+  padding: 6rem 0;
+  gap: 3rem;
+}
+
+.leftSection {
+  flex: 0 0 auto;
+  width: 300px;
+}
+
+.moviePoster {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.posterImage {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+}
+
+.movieActions {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.moviePoster:hover .movieActions {
+  opacity: 1;
+}
+
+.actionButton {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.actionButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.movieInfo {
+  margin-top: 2rem;
+}
+
+
+.originalTitle {
+  font-size: 1.2rem; /* Slightly increased from 1rem for better balance */
+  color: #ccc;
+  margin-bottom: 1rem;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.movieMeta {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #ccc;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+}
+
+.playButton, .favoriteButton {
+  min-width: 140px;
+  transition: all 0.3s ease;
+}
+
+.playButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+}
+
+.favoriteButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+.favoriteButton.active {
+  background-color: #198754;
+  border-color: #198754;
+}
+
+.rightSection {
+  flex: 1;
+  max-width: 800px;
+}
+
+.posterColumn {
+  flex: 0 0 350px;
+}
+
+.infoColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 400px;
+}
+
+.movieInfo {
+  margin-top: 0;
+  margin-bottom: auto;
+}
+
+.movieDescription {
+  font-size: 1rem;
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-height: none; /* Remove height limitation */
+  overflow-y: visible; /* Remove scrolling */
+}
+
+/* Remove scrollbar styles since they're no longer needed */
+.movieDescription::-webkit-scrollbar,
+.movieDescription::-webkit-scrollbar-track,
+.movieDescription::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+.buttonsRow {
+  margin-top: auto;
+}
+
+.descriptionInDetail {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .bannerContent {
+    flex-direction: column;
+  }
+  
+  .posterColumn {
+    flex: 0 0 auto;
+    margin-bottom: 2rem;
+  }
+  
+  .movieDescription {
+    max-height: none;
+    margin-bottom: 1rem;
+  }
+
+  .infoColumn {
+    height: auto;
+  }
+
+  .descriptionInDetail {
+    display: block;
+  }
+
+  .movieDescriptionInBanner {
+    display: none;
+  }
+
+  .leftSection, .rightSection {
+    width: 100%;
+  }
+  
+  .describe {
+    width: 90%;
+    margin: 5% auto;
+  }
+}
+
+.movieAvatar {
+  width: 350px;
+  height: 400px;
+  overflow: hidden;
+  border: 3px solid #fff;
+  position: relative;
+}
+
+.movieActions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.movieActions button {
+  border-radius: 20px;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.movieActions button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.avatarImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.movieTitle {
+  font-size: 2.2rem; 
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.movieMeta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.movieMeta span {
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
+.actorsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.actorCard {
+  width: 100px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.actorCard:hover {
+  transform: translateY(-5px);
+}
+
+.actorAvatar {
+  width: 80px;
+  height: 80px;
+  background: #444;
+  border-radius: 50%;
+  margin: 0 auto;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.actorImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.actorName {
+  font-size: 0.9rem;
+  color: #fff;
+  margin-top: 0.5rem;
+}
+
+.genresContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.genreBadge {
+  background-color: rgba(220, 53, 69, 0.8);
+  color: white;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  border-radius: 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.genreBadge:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  background-color: rgba(220, 53, 69, 1);
+}
+
+.episodeList {
+  margin-top: 20px;
+}
+
+.episodeBtn {
+  min-width: 100px;
+  margin: 5px;
+}
+
+.episodeBtnActive {
+  background-color: #dc3545;
+  color: white;
+}
+
+.videoPlayerOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1050;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.videoPlayerContainer {
+  width: 80%;
+  max-width: 1200px;
+  background: #000;
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 1100;
+}
+
+.playerControls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.playerControls button {
+  min-width: 120px;
+}
+
+.loadingSpinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+/* Modal styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  color: white;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.modalBody {
+  padding: 1.5rem 1rem;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Rating buttons */
+.ratingButtons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.ratingButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #333;
+  color: white;
+  border: none;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.ratingButton:hover {
+  background-color: #dc3545;
+  transform: scale(1.1);
+}
+
+.ratingActive {
+  background-color: #dc3545;
+  transform: scale(1.1);
+}
+
+.ratingLabel {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  height: 1.5rem;
+}
+
+.socialButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.describe {
+  width: 650px;
+  margin-left: 350px;
+  margin-top: 0; 
+  padding: 15px; /* Increased from 30px for more breathing room */
+  font-size: 1.4rem; /* Increased from 1.2rem */
+  display: flex;    
+  flex-direction: column;
+  position: relative;
+  max-width: 2000px;
+  background: rgba(155, 94, 94, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e1e1e1;
+  line-height: 2; /* Increased from 1.8 for better readability */
+  letter-spacing: 0.3px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  transition: all 0.3s ease;
+}
+
+.describe:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.describe h5 {
+  font-size: 1,4rem; /* Increased from 2.2rem */
+  font-weight: 700; /* Increased from 600 for stronger heading */
+  margin-bottom: 2rem; /* Increased from 1.5rem */
+  background: linear-gradient(120deg, #ffffff, #a8a8a8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+  letter-spacing: -0.5px; /* Added for better title style */
+}
+
+.describe p {
+  font-size: 1.4rem; /* Explicitly set paragraph size */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem; /* Increased from 1.5rem */
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+@media (max-width: 768px) {
+  .describe {
+    font-size: 1.2rem;
+    padding: 30px;
+  }
+  
+  .describe h5 {
+    font-size: 2.4rem;
+  }
+  
+  .describe p {
+    font-size: 1.2rem;
+  }
+
+  .movieTitle {
+    font-size: 1.8rem;
+  }
+  
+  .originalTitle {
+    font-size: 1rem;
+  }
+}
+
+.posterOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0);
+  transition: all 0.3s ease;
+}
+
+.posterOverlay:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.playButtonOverlay {
+  width: 80px;
+  height: 80px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.posterOverlay:hover .playButtonOverlay {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.playButtonContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.playIcon {
+  width: 60px; /* Adjust this value to resize the play icon */
+  height: 60px; /* Adjust this value to resize the play icon */
+  object-fit: contain;
+  filter: brightness(0) invert(1); /* Makes the icon white */
+}
+
+.playButtonOverlay:hover .playButtonContent {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(54, 43, 44, 0.5);
+}
+
+.playIconWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.playIconWrapper i {
+  color: white;
+  font-size: 1.8rem;
+  margin-left: 4px; /* Slight offset to center the play icon visually */
+}
+
+.playButtonOverlay i {
+  margin-left: 5px; /* Slight offset for play icon */
+}
+
+.relatedMoviesContainer {
+  position: relative;
+  margin: 0 -15px;
+  padding: 0 40px;
+}
+
+/* Thay đổi style cho nút cuộn */
+.scrollButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.scrollButton:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.scrollLeft {
+  left: 0;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.scrollRight {
+  right: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.scrollButton i {
+  font-size: 1.5rem;
+}
+
+.relatedMovies {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 1rem 0;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+  scrollbar-width: none;  /* Hide scrollbar for Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.relatedMovies::-webkit-scrollbar {
+  display: none;
+}
+
+.relatedMovies:active {
+  cursor: grabbing;
+}
+
+.relatedMovieCard {
+  flex: 0 0 180px;
+  transition: transform 0.3s ease;
+}
+
+.relatedMovieCard:hover {
+  transform: translateY(-5px);
+}
+
+.movieLink {
+  text-decoration: none;
+  color: white;
+  display: block;
+}
+
+.relatedMoviePoster {
+  position: relative;
+  width: 100%;
+  height: 270px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.relatedMovieImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.relatedMovieOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.relatedMovieCard:hover .relatedMovieOverlay {
+  opacity: 1;
+}
+
+.relatedMovieTitle {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .relatedMovieCard {
+    flex: 0 0 160px; /* Nhỏ hơn trên mobile */
+  }
+
+  .relatedMoviePoster {
+    height: 240px;
+  }
+}
+
+.movieLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.movieLink:hover {
+  color: inherit;
+}
+
+/* CSS cho phần đánh giá */
+.ratingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.ratingStars {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.ratingStars i {
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: color 0.2s ease;
+}
+
+.starActive {
+  color: #ffc107;
+}
+
+.starInactive {
+  color: #6c757d;
+}
+
+.ratingText {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* CSS cho phần bình luận */
+.commentsSection {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.commentsList {
+  margin-bottom: 2rem;
+}
+
+.commentItem {
+  background-color: rgba(255,255,255,0.05);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.commentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.commentUser {
+  display: flex;
+  align-items: center;
+}
+
+.commentAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.commentUsername {
+  font-weight: bold;
+  color: #fff;
+}
+
+.commentDate {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.commentContent {
+  color: #ddd;
+  margin-bottom: 0;
+}
+
+.addCommentForm {
+  margin-top: 1.5rem;
+}
+
+
+
+
+
+
+
+
