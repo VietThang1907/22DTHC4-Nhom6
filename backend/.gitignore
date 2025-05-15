@@ -1,0 +1,18 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+
+# Tệp môi trường
+.env
+
+# Tệp cài đặt của hệ điều hành (Mac, Windows)
+.DS_Store
+Thumbs.db
+
+# Tệp lock của package manager
+package-lock.json
+yarn.lock
+
